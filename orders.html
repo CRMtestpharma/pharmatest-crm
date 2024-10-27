@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - PharmaTest CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation (Same structure as other pages) -->
+    <nav class="bg-white shadow-lg">
+        <!-- (Navigation content same as other pages) -->
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Header with Actions -->
+        <div class="md:flex md:items-center md:justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">Orders Management</h2>
+            <div class="mt-4 flex md:mt-0 md:ml-4">
+                <button onclick="showNewOrderModal()" class="bg-[#003876] text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    + New Order
+                </button>
+            </div>
+        </div>
+
+        <!-- Filters and Search -->
+        <div class="bg-white p-4 rounded-lg shadow mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <input 
+                    type="text" 
+                    placeholder="Search orders..." 
+                    class="rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]"
+                >
+                <select class="rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                    <option value="">All Statuses</option>
+                    <option value="pending">Pending Approval</option>
+                    <option value="approved">Approved</option>
+                    <option value="delivered">Delivered</option>
+                </select>
+                <select class="rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                    <option value="">All Accounts</option>
+                    <option value="kfh">King Fahd Hospital</option>
+                    <option value="sgh">Saudi German Hospital</option>
+                </select>
+                <div class="flex gap-2">
+                    <button class="flex-1 bg-gray-100 px-4 py-2 rounded-lg hover:bg-gray-200">
+                        Filter
+                    </button>
+                    <button class="flex-1 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100">
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="bg-white shadow overflow-hidden rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            Order ID
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            Account
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            Value
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            Status
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            Date
+                        </th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <!-- Sample Order Row -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-[#003876]">ORD-2024-001</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">King Fahd Hospital</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">SAR 25,000</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 py-1 text-xs rounded-full bg-yellow-100 text-yellow-800">
+                                Pending Approval
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            2024-01-15
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm">
+                            <button class="text-[#003876] hover:text-blue-700">View</button>
+                            <button class="ml-3 text-[#003876] hover:text-blue-700">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- New Order Modal -->
+    <div id="newOrderModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Create New Order</h3>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Account</label>
+                    <select class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                        <option>Select Account</option>
+                        <option>King Fahd Hospital</option>
+                        <option>Saudi German Hospital</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Products</label>
+                    <div class="space-y-2" id="productsList">
+                        <div class="flex gap-2">
+                            <select class="flex-1 rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                                <option>Select Product</option>
+                                <option>Product 1</option>
+                                <option>Product 2</option>
+                            </select>
+                            <input 
+                                type="number" 
+                                placeholder="Qty" 
+                                class="w-24 rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]"
+                            >
+                            <button class="text-[#003876]">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Notes</label>
+                    <textarea 
+                        class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]"
+                        rows="3"
+                    ></textarea>
+                </div>
+            </div>
+            <div class="p-6 border-t border-gray-200 flex justify-end gap-3">
+                <button 
+                    onclick="hideNewOrderModal()"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg"
+                >
+                    Cancel
+                </button>
+                <button 
+                    class="px-4 py-2 text-sm font-medium text-white bg-[#003876] hover:bg-blue-700 rounded-lg"
+                >
+                    Create Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
