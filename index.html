@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Test CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+            <!-- Logo -->
+            <div class="flex justify-center">
+                <div class="text-center">
+                    <span class="text-4xl font-bold text-[#003876]">Pharma</span>
+                    <span class="text-4xl text-gray-600">Test</span>
+                </div>
+            </div>
+            <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+                CRM System
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Test Environment
+            </p>
+        </div>
+
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <form id="loginForm" class="space-y-6">
+                    <!-- Email Input -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Email address
+                        </label>
+                        <div class="mt-1">
+                            <input
+                                type="email"
+                                required
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#003876] focus:border-[#003876] sm:text-sm"
+                                placeholder="Enter your email"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">
+                            Password
+                        </label>
+                        <div class="mt-1">
+                            <input
+                                type="password"
+                                required
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#003876] focus:border-[#003876] sm:text-sm"
+                                placeholder="Enter your password"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button
+                            type="submit"
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#003876] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#003876] transition-colors"
+                        >
+                            Sign in
+                        </button>
+                    </div>
+
+                    <!-- Test Credentials -->
+                    <div class="mt-4 bg-blue-50 p-4 rounded-md">
+                        <p class="text-sm text-blue-800">
+                            Test Credentials:<br>
+                            Email: test@pharmatest.com<br>
+                            Password: Test@2024
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>
