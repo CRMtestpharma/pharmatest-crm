@@ -4,42 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PharmaTest CRM</title>
+    <!-- Correct path to CSS file in GitHub Pages structure -->
+    <link rel="stylesheet" href="/pharmatest-crm/css/styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/auth.js" defer></script>
+    <!-- Correct path to JS file in GitHub Pages structure -->
+    <script src="/pharmatest-crm/js/auth.js" defer></script>
 </head>
 <body class="bg-gray-100">
     <div class="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <!-- Logo Section -->
+        <!-- Logo and Title -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="text-center mb-6">
-                <span class="text-4xl font-bold text-[#003876]">Pharma</span>
-                <span class="text-4xl text-gray-600">Test</span>
+            <div class="flex justify-center">
+                <div class="text-center">
+                    <span class="text-4xl font-bold text-[#003876]">Pharma</span>
+                    <span class="text-4xl text-gray-600">Test</span>
+                </div>
             </div>
             <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
                 CRM System
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
-                Pharmaceutical Sales Management System
+                Please sign in to continue
             </p>
         </div>
 
         <!-- Login Form -->
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-            <div class="bg-white py-8 px-4 shadow-lg sm:rounded-lg sm:px-10 hover-scale">
+            <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <form id="loginForm" class="space-y-6">
                     <!-- Email Field -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700">
                             Email address
                         </label>
-                        <div class="mt-1 relative rounded-md shadow-sm">
+                        <div class="mt-1">
                             <input
                                 id="email"
                                 name="email"
                                 type="email"
                                 required
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#003876] focus:border-[#003876] sm:text-sm"
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#003876] focus:border-[#003876]"
                                 placeholder="Enter your email"
                             />
                         </div>
@@ -50,19 +54,19 @@
                         <label for="password" class="block text-sm font-medium text-gray-700">
                             Password
                         </label>
-                        <div class="mt-1 relative rounded-md shadow-sm">
+                        <div class="mt-1">
                             <input
                                 id="password"
                                 name="password"
                                 type="password"
                                 required
-                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#003876] focus:border-[#003876] sm:text-sm"
+                                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#003876] focus:border-[#003876]"
                                 placeholder="Enter your password"
                             />
                         </div>
                     </div>
 
-                    <!-- Remember Me & Forgot Password -->
+                    <!-- Remember Me -->
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input
@@ -75,92 +79,44 @@
                                 Remember me
                             </label>
                         </div>
-
-                        <div class="text-sm">
-                            <a href="#" class="font-medium text-[#003876] hover:text-blue-700">
-                                Forgot password?
-                            </a>
-                        </div>
                     </div>
 
                     <!-- Login Button -->
                     <div>
                         <button
                             type="submit"
-                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#003876] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#003876] transition-all duration-200 hover:scale-105"
+                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#003876] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#003876]"
                         >
                             Sign in
                         </button>
                     </div>
 
                     <!-- Test Credentials -->
-                    <div class="mt-4 bg-blue-50 p-4 rounded-md fade-in">
-                        <h3 class="text-sm font-medium text-blue-800 mb-1">Test Credentials</h3>
-                        <div class="text-sm text-blue-700">
-                            <p>Medical Rep:</p>
-                            <p>Email: rep@pharmatest.com</p>
-                            <p>Password: Test@2024</p>
-                            <hr class="my-2 border-blue-200">
-                            <p>Manager:</p>
-                            <p>Email: manager@pharmatest.com</p>
-                            <p>Password: Manager@2024</p>
-                        </div>
+                    <div class="mt-4 bg-blue-50 p-4 rounded-md">
+                        <p class="text-sm text-blue-800">
+                            Test Credentials:<br>
+                            Email: test@pharmatest.com<br>
+                            Password: Test@2024
+                        </p>
                     </div>
                 </form>
-            </div>
-        </div>
-
-        <!-- Loading Overlay -->
-        <div id="loadingOverlay" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-            <div class="animate-spin rounded-full h-32 w-32 border-b-2 border-white"></div>
-        </div>
-    </div>
-
-    <!-- Error Message Toast -->
-    <div id="errorToast" class="hidden fixed bottom-4 right-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg shadow-lg fade-in">
-        <div class="flex">
-            <div class="py-1">
-                <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-            <div class="ml-3">
-                <p id="errorMessage" class="text-sm"></p>
             </div>
         </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
-            // Show loading overlay
-            document.getElementById('loadingOverlay').classList.remove('hidden');
-            
-            try {
-                const success = await login(email, password);
-                if (success) {
-                    window.location.href = 'dashboard.html';
-                } else {
-                    showError('Invalid email or password');
-                }
-            } catch (error) {
-                showError('Login failed. Please try again.');
-            } finally {
-                document.getElementById('loadingOverlay').classList.add('hidden');
+            // Basic validation
+            if (email === 'test@pharmatest.com' && password === 'Test@2024') {
+                window.location.href = '/pharmatest-crm/pages/dashboard.html';
+            } else {
+                alert('Invalid credentials. Please use the test credentials provided.');
             }
         });
-
-        function showError(message) {
-            const toast = document.getElementById('errorToast');
-            document.getElementById('errorMessage').textContent = message;
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        }
     </script>
 </body>
 </html>
