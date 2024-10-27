@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - PharmaTest CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Report Selection -->
+        <div class="mb-6 bg-white rounded-lg shadow p-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <select class="rounded-lg border-gray-300" id="reportType">
+                    <option>Sales Analysis</option>
+                    <option>Visit Coverage</option>
+                    <option>Target Achievement</option>
+                    <option>Product Performance</option>
+                </select>
+                
+                <input type="date" class="rounded-lg border-gray-300" id="startDate">
+                <input type="date" class="rounded-lg border-gray-300" id="endDate">
+                
+                <button class="bg-[#003876] text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    Generate Report
+                </button>
+            </div>
+        </div>
+
+        <!-- Report Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Main Chart -->
+            <div class="lg:col-span-2 bg-white rounded-lg shadow p-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Sales Performance</h3>
+                <canvas id="mainChart" height="300"></canvas>
+            </div>
+
+            <!-- KPI Summary -->
+            <div class="bg-white rounded-lg shadow p-4">
+                <h3 class="text-lg font-medium text-gray-900 mb-4">Key Metrics</h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Total Sales</p>
+                        <p class="text-2xl font-bold text-[#003876]">SAR 2.5M</p>
+                        <p class="text-sm text-green-600">↑ 12% vs. last period</p>
+                    </div>
+                    
+                    <div class="p-4 bg-green-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Target Achievement</p>
+                        <p class="text-2xl font-bold text-green-600">85%</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                            <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-purple-50 rounded-lg">
+                        <p class="text-sm text-gray-600">Visit Coverage</p>
+                        <p class="text-2xl font-bold text-purple-600">92%</p>
+                        <p class="text-sm text-purple-600">47/51 accounts visited</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Tables -->
+        <div class="mt-6 bg-white rounded-lg shadow">
+            <div class="p-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Detailed Analysis</h3>
+            </div>
+            <div class="p-4">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Product</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Sales</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Target</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Achievement</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Growth</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <!-- Sample data rows -->
+                        <tr>
+                            <td class="px-6 py-4">Product A</td>
+                            <td class="px-6 py-4">SAR 850,000</td>
+                            <td class="px-6 py-4">SAR 1,000,000</td>
+                            <td class="px-6 py-4">85%</td>
+                            <td class="px-6 py-4 text-green-600">+12%</td>
+                        </tr>
+                        <!-- More rows will be added dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="mt-6 flex justify-end space-x-4">
+            <button class="px-4 py-2 text-[#003876] hover:bg-blue-50 rounded-lg">
+                Export to Excel
+            </button>
+            <button class="px-4 py-2 text-[#003876] hover:bg-blue-50 rounded-lg">
+                Export to PDF
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Initialize charts
+        const ctx = document.getElementById('mainChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Sales Performance',
+                    data: [650000, 750000, 850000, 900000, 950000, 1000000],
+                    borderColor: '#003876',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html>
