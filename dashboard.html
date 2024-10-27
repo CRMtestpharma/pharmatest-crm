@@ -3,150 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Pharma Test CRM</title>
+    <title>Dashboard - PharmaTest CRM</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="bg-gray-100">
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between h-16">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <span class="text-2xl font-bold text-[#003876]">Pharma</span>
-                        <span class="text-2xl text-gray-600">Test</span>
-                    </div>
-                </div>
+                <!-- Logo -->
                 <div class="flex items-center">
-                    <button
-                        onclick="window.location.href='index.html'"
-                        class="ml-4 px-4 py-2 text-sm text-white bg-[#003876] rounded-md hover:bg-blue-700 transition-colors"
-                    >
-                        Logout
-                    </button>
+                    <span class="text-2xl font-bold text-[#003876]">Pharma</span>
+                    <span class="text-2xl text-gray-600">Test</span>
+                </div>
+
+                <!-- Navigation Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="dashboard.html" class="text-[#003876] hover:text-blue-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    <a href="accounts.html" class="text-gray-600 hover:text-[#003876] px-3 py-2 rounded-md text-sm font-medium">Accounts</a>
+                    <a href="orders.html" class="text-gray-600 hover:text-[#003876] px-3 py-2 rounded-md text-sm font-medium">Orders</a>
+                    <a href="visits.html" class="text-gray-600 hover:text-[#003876] px-3 py-2 rounded-md text-sm font-medium">Visits</a>
+                    <a href="reports.html" class="text-gray-600 hover:text-[#003876] px-3 py-2 rounded-md text-sm font-medium">Reports</a>
+                </div>
+
+                <!-- User Menu -->
+                <div class="flex items-center">
+                    <button class="bg-[#003876] text-white px-4 py-2 rounded-lg hover:bg-blue-700">+ New Order</button>
+                    <button onclick="logout()" class="ml-4 text-gray-600 hover:text-gray-900">Logout</button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <!-- Stat Card 1 -->
-            <div class="bg-white overflow-hidden shadow rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <div class="rounded-md bg-blue-500 p-3">
-                                <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">
-                                    Total Sales
-                                </dt>
-                                <dd class="text-lg font-bold text-gray-900">
-                                    SAR 2.5M
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <!-- Total Sales Card -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Total Sales</h3>
+                <p id="totalSales" class="mt-2 text-3xl font-bold text-[#003876]">SAR 2.5M</p>
+                <span class="text-green-500 text-sm">↑ 12% from last month</span>
             </div>
 
-            <!-- Stat Card 2 -->
-            <div class="bg-white overflow-hidden shadow rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <div class="rounded-md bg-green-500 p-3">
-                                <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">
-                                    Coverage
-                                </dt>
-                                <dd class="text-lg font-bold text-gray-900">
-                                    85%
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
+            <!-- Coverage Card -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Coverage</h3>
+                <p id="coverage" class="mt-2 text-3xl font-bold text-[#003876]">85%</p>
+                <span class="text-green-500 text-sm">↑ 5% from target</span>
             </div>
 
-            <!-- Stat Card 3 -->
-            <div class="bg-white overflow-hidden shadow rounded-lg">
-                <div class="p-5">
-                    <div class="flex items-center">
-                        <div class="flex-shrink-0">
-                            <div class="rounded-md bg-purple-500 p-3">
-                                <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="ml-5 w-0 flex-1">
-                            <dl>
-                                <dt class="text-sm font-medium text-gray-500 truncate">
-                                    Active Orders
-                                </dt>
-                                <dd class="text-lg font-bold text-gray-900">
-                                    45
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
+            <!-- Active Orders Card -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-gray-500 text-sm font-medium">Active Orders</h3>
+                <p id="activeOrders" class="mt-2 text-3xl font-bold text-[#003876]">45</p>
+                <span class="text-blue-500 text-sm">4 pending approval</span>
             </div>
         </div>
 
         <!-- Recent Activity -->
-        <div class="mt-8">
-            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
-                Recent Activity
-            </h3>
-            <div class="bg-white shadow overflow-hidden sm:rounded-md">
-                <ul class="divide-y divide-gray-200">
-                    <li>
-                        <div class="px-4 py-4 sm:px-6">
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-[#003876] truncate">
-                                    New order submitted
-                                </p>
-                                <div class="ml-2 flex-shrink-0 flex">
-                                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        Completed
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="mt-2 sm:flex sm:justify-between">
-                                <div class="sm:flex">
-                                    <p class="flex items-center text-sm text-gray-500">
-                                        King Fahd Hospital
-                                    </p>
-                                </div>
-                                <div class="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-                                    <p>
-                                        Just now
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <!-- More items -->
-                </ul>
+        <div class="bg-white rounded-lg shadow mb-6">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Recent Activity</h2>
+            </div>
+            <div class="p-6">
+                <div class="space-y-4" id="recentActivity">
+                    <!-- Activity items will be loaded by JavaScript -->
+                </div>
             </div>
         </div>
-    </div>
+
+        <!-- Pending Approvals -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-lg font-medium text-gray-900">Pending Approvals</h2>
+            </div>
+            <div class="p-6">
+                <div class="space-y-4" id="pendingApprovals">
+                    <!-- Approval items will be loaded by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
 </body>
 </html>
