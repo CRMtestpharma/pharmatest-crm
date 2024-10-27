@@ -5,81 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PharmaTest CRM</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+        }
         .error-message {
-            background-color: #ffebee;
-            color: #d32f2f;
-            padding: 8px 16px;
-            border-radius: 4px;
-            margin-top: 8px;
             display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fee2e2;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <div class="min-h-screen flex flex-col justify-center items-center">
-        <!-- Logo and Title -->
         <div class="text-center mb-6">
-            <h1 class="text-3xl">
-                <span class="text-[#003876] font-bold">Pharma</span>
-                <span class="text-gray-600">Test</span>
+            <h1 class="text-3xl mb-2">
+                <span class="text-[#003876] font-bold">Pharma</span><span class="text-gray-600">Test</span>
             </h1>
-            <h2 class="text-2xl font-semibold text-gray-800 mt-4">CRM System</h2>
-            <p class="text-gray-600 mt-2">Pharmaceutical Sales Management System</p>
+            <h2 class="text-xl text-gray-800">CRM System</h2>
+            <p class="text-sm text-gray-600">Pharmaceutical Sales Management System</p>
         </div>
 
-        <!-- Login Form -->
-        <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-            <form id="loginForm" class="space-y-4">
-                <div>
+        <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+            <form id="loginForm">
+                <div class="mb-4">
                     <label class="block text-gray-700 mb-2">Email address</label>
                     <input 
                         type="email" 
                         id="email"
                         class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#003876]"
-                        placeholder="rep@pharmatest.com"
+                        value="rep@pharmatest.com"
                     />
                 </div>
 
-                <div>
+                <div class="mb-6">
                     <label class="block text-gray-700 mb-2">Password</label>
                     <input 
                         type="password" 
                         id="password"
                         class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-[#003876]"
-                        placeholder="••••••••"
+                        value="••••••••"
                     />
                 </div>
 
-                <div class="flex items-center justify-between mt-4">
+                <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center">
-                        <input 
-                            type="checkbox" 
-                            id="remember" 
-                            class="text-[#003876]"
-                        />
-                        <label for="remember" class="ml-2 text-gray-600">Remember me</label>
+                        <input type="checkbox" id="remember" class="mr-2">
+                        <label for="remember" class="text-gray-600 text-sm">Remember me</label>
                     </div>
-                    <a href="#" class="text-[#003876] hover:underline">Forgot password?</a>
+                    <a href="#" class="text-[#003876] text-sm hover:underline">Forgot password?</a>
                 </div>
 
                 <button 
                     type="submit"
-                    class="w-full bg-[#003876] text-white p-2 rounded mt-6 hover:bg-blue-900 transition-colors"
+                    class="w-full bg-[#003876] text-white py-2 px-4 rounded hover:bg-blue-900"
                 >
                     Sign in
                 </button>
 
-                <!-- Test Credentials -->
                 <div class="mt-6 bg-blue-50 p-4 rounded">
                     <h3 class="text-[#003876] font-medium mb-2">Test Credentials</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <p class="text-gray-700">Medical Rep:</p>
-                            <p class="text-[#003876]">Email: rep@pharmatest.com</p>
-                            <p class="text-[#003876]">Password: Test@2024</p>
-                        </div>
-                        <div>
+                    <div class="text-sm">
+                        <p class="text-gray-700">Medical Rep:</p>
+                        <p class="text-[#003876]">Email: rep@pharmatest.com</p>
+                        <p class="text-[#003876]">Password: Test@2024</p>
+                        <div class="mt-2">
                             <p class="text-gray-700">Manager:</p>
                             <p class="text-[#003876]">Email: manager@pharmatest.com</p>
                             <p class="text-[#003876]">Password: Manager@2024</p>
@@ -87,28 +85,30 @@
                     </div>
                 </div>
             </form>
-
-            <!-- Error Message -->
-            <div id="errorMessage" class="error-message">
-                Invalid email or password
-            </div>
         </div>
     </div>
 
-    <script>
-        const loginForm = document.getElementById('loginForm');
-        const errorMessage = document.getElementById('errorMessage');
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message">
+        Invalid email or password
+    </div>
 
-        loginForm.addEventListener('submit', function(e) {
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // Validate credentials
-            if ((email === 'rep@pharmatest.com' && password === 'Test@2024') ||
-                (email === 'manager@pharmatest.com' && password === 'Manager@2024')) {
-                window.location.href = 'pages/dashboard.html';
+            // Check credentials
+            if (email === 'rep@pharmatest.com' && password === 'Test@2024') {
+                // For medical rep
+                window.location.href = '/pharmatest-crm/pages/dashboard.html';
+            } else if (email === 'manager@pharmatest.com' && password === 'Manager@2024') {
+                // For manager
+                window.location.href = '/pharmatest-crm/pages/dashboard.html';
             } else {
+                // Show error
+                const errorMessage = document.getElementById('errorMessage');
                 errorMessage.style.display = 'block';
                 setTimeout(() => {
                     errorMessage.style.display = 'none';
