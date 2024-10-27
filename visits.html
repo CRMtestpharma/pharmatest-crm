@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Planning - PharmaTest CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation (Same structure as other pages) -->
+    <nav class="bg-white shadow-lg">
+        <!-- (Navigation content same as other pages) -->
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="md:flex md:items-center md:justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">Visit Planning</h2>
+            <div class="mt-4 flex md:mt-0 md:ml-4">
+                <button onclick="showNewVisitModal()" class="bg-[#003876] text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    + Plan New Visit
+                </button>
+            </div>
+        </div>
+
+        <!-- Calendar and Visit List View -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Visit List -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-4 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900">Upcoming Visits</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-4">
+                            <!-- Sample Visit -->
+                            <div class="border rounded-lg p-4 hover:bg-gray-50">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-medium text-gray-900">King Fahd Hospital</h4>
+                                        <p class="text-sm text-gray-500">Dr. Ahmed Abdullah</p>
+                                        <p class="text-sm text-gray-500">Regular Visit</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-sm font-medium text-gray-900">Today, 2:00 PM</p>
+                                        <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">
+                                            Confirmed
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- More visits will be added dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div>
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-4 border-b border-gray-200">
+                        <h3 class="text-lg font-medium text-gray-900">Visit Statistics</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Monthly Target</span>
+                                <span class="font-medium text-[#003876]">45/50</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-[#003876] h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-4">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Completed</p>
+                                    <p class="text-2xl font-bold text-[#003876]">45</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <p class="text-sm text-gray-600">Coverage</p>
+                                    <p class="text-2xl font-bold text-green-600">90%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Visit Modal -->
+    <div id="newVisitModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Plan New Visit</h3>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Account</label>
+                    <select class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                        <option>Select Account</option>
+                        <option>King Fahd Hospital</option>
+                        <option>Saudi German Hospital</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">HCP</label>
+                    <select class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                        <option>Select HCP</option>
+                        <option>Dr. Ahmed Abdullah</option>
+                        <option>Dr. Sarah Mohammad</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Visit Type</label>
+                    <select class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-[#003876] focus:border-[#003876]">
+                        <option>Regular Visit</option>
+                        <option>RTM</option>
